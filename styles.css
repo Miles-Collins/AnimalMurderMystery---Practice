@@ -1,0 +1,13 @@
+.flip {
+  transform: scale(-1, 1);
+}
+
+.text-shadow {
+  text-shadow: 0px 0px 5px black;
+}
+
+body {
+  background-image: url("https://4.bp.blogspot.com/-VnnR8Bxh_WQ/UI31EZq9u4I/AAAAAAAADK0/ZJw2Wjhr2Ho/s1600/haunted+cartoon.jpg");
+  background-size: cover;
+}
+
