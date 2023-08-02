@@ -14,40 +14,83 @@
 <body>
   
 <header>
-  <section class="container">
-    <div class="row justify-content-center">
-      <div class="col-6 text-center text-light text-shadow">
-        <h1><i class="fs-1 d-inline-block flip mdi mdi-magnify"></i> Animal Murder Mystery <i class="fs-1 mdi mdi-magnify"></i></h1>
+  <section class="container text-light text-shadow">
+    <div class="row justify-content-center align-items-center text-center">
+      <div class="col-3">
+        <h5 class="m-0">Attempts: <span id="attempts">3</span></h5>
+      </div>
+      <div class="col-6 text-shadow">
+        <h1 class="m-0"><i class="fs-1 d-inline-block flip mdi mdi-magnify"></i> Animal Murder Mystery <i class="fs-1 mdi mdi-magnify"></i></h1>
+      </div>
+       <div class="col-3">
+         <h5 class="m-0">
+            Accused Animals: <span id="accused">🦍 🦏 🐳</span>
+         </h5>
       </div>
     </div>
   </section>
 </header>
 
 <main>
-  <section class="container">
-    <div class="row">
+  <section  class="container">
+    <div id="animals" class="row pt-5 justify-content-between">
       <!-- SECTION ANIMAL CARDS -->
-      <div id="animals" class="col-1">
-
+      <div class="col-1 text-center">
+        <div  class="row">
+          <div class="col-12"><p class="fs-6 p-0 text-light text-uppercase">Gorilla</p></div>
+          <div class="col-12"> <p class="fs-1">🦍</p></div>
+        </div>
+      </div>
+    </div>  
+    <div class="row mt-5 justify-content-center text-light">
+      <div class="col-4">
+        <input class="form-control" name="murderer" title="Who's the murderer..." placeholder="Who is the murderer..." type="text">
+      </div>
+      <div class="col-10 text-center mt-3">
+        <h1 class="text-shadow text-decoration-underline">Current Leads</h1>
       </div>
     </div>
   </section>
+</main>
 
-    <section class="container">
-      <div class="row">
-        <div class="col-6">
-          <div class="row">
-
+<footer>
+      <section class="container text-light ">
+      <div class="row text-center">
+        <div class="col-4">
+          <div class="row justify-content-center">
+            <div onclick="drawAllAnimals()" class="col-10 filter-button">
+              <p class="fs-2">Show All</p>
+            </div>
+            <div onclick="filterIfMammal()" class="col-10 filter-button">
+              <p class="fs-2">Mammals</p>
+            </div>
           </div>
         </div>
-        <div class="col-6">
-          <div class="row">
-
+        <div class="col-4">
+          <div class="row justify-content-center">
+            <div onclick="filterCanFly()" class="col-10 filter-button">
+              <p class="fs-2">Can Fly</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row justify-content-center ">
+            <div onclick="filterBipedal()" class="col-10 p-0 filter-button">
+              <p class="fs-2">Bipedal</p>
+            </div>
+            <div onclick="filterQuadrupedal()" class="col-10 filter-button">
+              <p class="fs-2">Quadrupedal</p>
+            </div>
+            <div onclick="filterNoneOfTheAbove()" class="col-10 filter-button">
+              <p class="fs-2">None of the Above</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-</main>
+</footer>
 
+
+<script src="app.js"></script>
 </body>
 </html>
