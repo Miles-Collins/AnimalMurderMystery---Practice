@@ -68,3 +68,22 @@ body {
   margin: 0px;
   padding: 0 1rem;
 }
+
+.murderer-emoji {
+font-size: 25rem;
+text-shadow: 0px 0px 3px black;
+}
+
+.murderer-emoji:hover{
+  text-shadow: 0px 0px 50rem white;
+  cursor: pointer;
+}
+
+.murderer-undetected {
+  font-size: 1.25rem;
+  color: white;
+  text-shadow: 0px 0px 2px black;
+  background-color: rgba(0, 0, 0, 0.782);
+  border: 1px solid white;
+  padding: 3rem;
+}

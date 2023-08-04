@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/7.2.96/css/materialdesignicons.min.css">
   <title>Animal Murder Mystery</title>
 </head>
-<body>
+<body id="lostScreen">
+  
   
 <header>
   <section class="container text-light text-shadow">
@@ -24,7 +25,7 @@
       </div>
        <div class="col-3">
          <h5 class="m-0">
-            Accused Animals: <span id="accused">🦍 🦏 🐳</span>
+            Accused Animals: <span id="accused"></span>
          </h5>
       </div>
     </div>
@@ -44,10 +45,13 @@
     </div>  
     <div class="row mt-5 justify-content-center text-light">
       <div class="col-4">
-        <input class="form-control" name="murderer" title="Who's the murderer..." placeholder="Who is the murderer..." type="text">
+        <button onclick="accuseMurderer()" type="button" class="form-control btn btn-outline-light" name="murderer" title="Who's the murderer..." placeholder="Who is the murderer..." type="text">Accuse</button>
       </div>
       <div class="col-10 text-center mt-3">
         <h1 class="text-shadow text-decoration-underline">Current Leads</h1>
+        <div id="clues" class="row">
+          
+        </div>
       </div>
     </div>
   </section>
@@ -59,35 +63,49 @@
         <div class="col-4">
           <div class="row justify-content-center">
             <div onclick="drawAllAnimals()" class="col-10 filter-button">
-              <p class="fs-2">Show All</p>
+              <p class="fs-3">Show All</p>
             </div>
             <div onclick="filterIfMammal()" class="col-10 filter-button">
-              <p class="fs-2">Mammals</p>
+              <p class="fs-3">Mammals</p>
+            </div>
+            <div onclick="filterLikesFruit()" class="col-10 filter-button">
+              <p class="fs-3">Likes Fruit</p>
             </div>
           </div>
         </div>
         <div class="col-4">
           <div class="row justify-content-center">
             <div onclick="filterCanFly()" class="col-10 filter-button">
-              <p class="fs-2">Can Fly</p>
+              <p class="fs-3">Can Fly</p>
+            </div>
+            <div onclick="filterFast()" class="col-10 filter-button">
+              <p class="fs-3">Fast</p>
+            </div>
+            <div onclick="filterSlow()" class="col-10 filter-button">
+              <p class="fs-3">Slow</p>
             </div>
           </div>
         </div>
         <div class="col-4">
           <div class="row justify-content-center ">
             <div onclick="filterBipedal()" class="col-10 p-0 filter-button">
-              <p class="fs-2">Bipedal</p>
+              <p class="fs-3">Bipedal</p>
             </div>
             <div onclick="filterQuadrupedal()" class="col-10 filter-button">
-              <p class="fs-2">Quadrupedal</p>
+              <p class="fs-3">Quadrupedal</p>
             </div>
             <div onclick="filterNoneOfTheAbove()" class="col-10 filter-button">
-              <p class="fs-2">None of the Above</p>
+              <p class="fs-3">None of the Above</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <div class="container">
+      <div class="row fixed-bottom bg-dark text-center text-light align-items-center">
+        <p class="m-0 py-3 fs-5">Made with 💖 by CodeWorks</p>
+      </div>
+    </div>
 </footer>
 
 
