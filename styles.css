@@ -44,6 +44,7 @@ body {
   opacity: 1;
   cursor: pointer;
   box-shadow: 0px 0px 10px white;
+  /* transition: box-shadow .15s; */
 }
 
 .text-shadow {

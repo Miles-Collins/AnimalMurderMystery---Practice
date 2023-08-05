@@ -335,6 +335,8 @@ let animals = [
   },
 ];
 
+let clues = ["mammal", "fruit", "speed", "fly", "legs"]
+
 // LOGIC FOR AFTER THE PROJECT IS "DONE"
 let attempts = 3
 
@@ -463,6 +465,7 @@ function filterSlow() {
   drawAnimals(slowAnimals)
 }
 
+
 function accuseMurderer() {
   const accusedMurderer = window.prompt("Who is the murderer?")
   console.log('[OUR ACCUSED MURDERER FROM WIND PROMPT', accusedMurderer)
@@ -479,7 +482,18 @@ function accuseMurderer() {
 
 
   if (murderer.isMurderer == true) {
-    return window.alert(`${murderer.found}`);
+    youWin = document.getElementById("mainScreen");
+    youWin.innerHTML = `
+    <div class="container">
+      <div class="row text-center justify-content-center">
+        <div class="col-12 murderer-undetected mt-3">You found the murderer!!</div>
+        <button class="col-2 btn btn-dark my-1" onclick="window.location.reload()">Play again</button>
+        <div class="col-12 murderer-emoji ">${murderer.emoji}</div>
+        <div class="col-12 murderer-undetected ">${murderer.found}</div>
+      </div>
+    </div>
+    `;
+    return window.refresh;
   }
 
   // SHOW OFF USING STRING INTERPOLATION AND MAKE A MORE THOUGHTFUL WINDOW ALERT IF WRONG
@@ -487,11 +501,12 @@ function accuseMurderer() {
   document.getElementById('accused').innerText += `${murderer.emoji}`
   attempts -= 1
   document.getElementById("attempts").innerText = attempts
+  drawClue();
 
   if (attempts == 0) {
     let actualMurderer = animals.find(animal => animal.isMurderer)
     // window.alert(`${actualMurderer.undetected}`)
-    gameOver = document.getElementById('lostScreen')
+    gameOver = document.getElementById('mainScreen')
     gameOver.innerHTML = `
     <div class="container">
       <div class="row text-center justify-content-center">
@@ -512,21 +527,94 @@ return murderer
 }
 
 function drawClue() {
-  murderer = animals.find(animal => animal.isMurderer == true)
-  console.log("[I'M THE MURDERER]", murderer)
+  murderer = animals.find((animal) => animal.isMurderer == true);
+  console.log("[I'M THE MURDERER]", murderer);
 
-  let clue = document.getElementById("clues")
+  let randomClueIndex = Math.floor(Math.random() * clues.length);
+  console.log("[RANDOM CLUE]", clues[randomClueIndex]);
 
-  let isMammal = murderer.mammal ? 'is a mammal' : "is not a mammal"
+  let theClue = clues[randomClueIndex];
+  let clue = document.getElementById("clues");
 
-  clue.innerHTML += `
-    <div class="col-12">
-      <p class="m-0">
-        The murderer ${isMammal}
-      </p>
-    </div>
-  `;
+  // ["mammal", "fruit", "speed", "fly", "legs"]
+
+
+  if (theClue == "mammal") {
+    let isMammal = murderer.mammal ? "is a mammal" : "is not a mammal";
+
+    clue.innerHTML += `
+      <div class="col-12">
+        <p class="m-0 fs-3">
+          The murderer ${isMammal}.
+        </p>
+      </div>
+    `;
+  }
+
+  if (theClue == "fruit") {
+    let likesFruit = murderer.diet.includes("fruit")
+      ? "likes to eat fruit"
+      : "does not like to eat fruit";
+
+    clue.innerHTML += `
+      <div class="col-12">
+        <p class="m-0 fs-3">
+          The murderer ${likesFruit}.
+        </p>
+      </div>
+    `;
+  }
+  if (theClue == "speed") {
+    let speed =
+      murderer.speed > 50
+        ? "is fast."
+        : murderer.speed <= 50 && murderer.speed >= 20
+        ? "runs at average speed"
+        : "is very slow";
+
+    clue.innerHTML += `
+      <div class="col-12">
+        <p class="m-0 fs-3">
+          The murderer ${speed}.
+        </p>
+      </div>
+    `;
+  }
+  if (theClue == "fly") {
+    let canFly = murderer.canFly ? "can fly" : "can't fly";
+
+    clue.innerHTML += `
+      <div class="col-12">
+        <p class="m-0 fs-3">
+          The murderer ${canFly}.
+        </p>
+      </div>
+    `;
+  }
+  if (theClue == "legs") {
+    let legs =
+      murderer.numberOfLegs == 4
+        ? "runs on four legs"
+        : murderer.numberOfLegs == 2
+        ? "runs on two legs"
+        : "doesn't run with two or four legs";
+
+    clue.innerHTML += `
+      <div class="col-12">
+        <p class="m-0 fs-3">
+          The murderer ${legs}.
+        </p>
+      </div>
+    `;
+  }
+
+  console.log(clues);
+
+  clues = clues.filter((clue) => clue != theClue);
+
+  console.log(clues);
 }
+
 
 makeMurderer()
 drawAllAnimals();
