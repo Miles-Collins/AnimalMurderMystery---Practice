@@ -75,6 +75,13 @@ font-size: 25rem;
 text-shadow: 0px 0px 3px black;
 }
 
+@media(min-height:600px) {
+  .murderer-emoji {
+    font-size: 22.5rem;
+    text-shadow: 0px 0px 3px black;
+  }
+}
+
 .murderer-emoji:hover{
   text-shadow: 0px 0px 50rem white;
   cursor: pointer;

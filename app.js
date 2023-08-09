@@ -378,8 +378,6 @@ function drawAllAnimals() {
  drawAnimals(animals)
 }   
 
-
-
 function filterIfMammal() {
   let mammals = animals.filter(animal => animal.mammal)
   console.log('These are all my mammals', mammals)
