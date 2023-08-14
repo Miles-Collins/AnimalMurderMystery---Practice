@@ -359,7 +359,7 @@ function drawAnimals(animalArrayThatGetsPassedIn) {
   animalArrayThatGetsPassedIn.forEach(
     (animal) =>
       (animalString += `
-        <div class="col-1 text-center">
+        <div onclick=accuseMurderer('${animal.name}') class="col-1 text-center">
         <div  class="row justify-content-center">
           <div class="col-12 text-center">
             <p class=" p-0 text-light text-shadow text-uppercase mb-0">${animal.name}</p>
@@ -464,8 +464,10 @@ function filterSlow() {
 }
 
 
-function accuseMurderer() {
-  const accusedMurderer = window.prompt("Who is the murderer?")
+function accuseMurderer(animalName) {
+  // VVVVVVV DO THIS AT THE END VVVVVVVV
+  const accusedMurderer = animalName ? window.prompt("You're accusing", animalName) : window.prompt("Who is the murderer?")
+  // const accusedMurderer = window.prompt("Who is the murderer?", animalName)
   console.log('[OUR ACCUSED MURDERER FROM WIND PROMPT', accusedMurderer)
   // SHOW OFF TO LOWER CASE TO MAKE SURE THE INPUT CAN COME IN WITH CAPITALS IN IN
   console.log('[LETS MAKE SURE TO MAKE LOWER CASE]', accusedMurderer.toLowerCase())
